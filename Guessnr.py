@@ -7,8 +7,8 @@ import random
 
 with open("guestaken.txt","w") as myfile:
     
-    def guesses(file):
-        myfile = open(file,"a+", encoding="utf-8")
+    def guesses(file):                 #this writes to file and his guesses + random number from the code
+        myfile = open(file,"a+", encoding="utf-8")  
         #myfile.write("%s log \n"%myID)
         myfile.write(" Your guess: \t%s\t"%guess)
         #myfile.readline()     
@@ -21,7 +21,7 @@ with open("guestaken.txt","w") as myfile:
         #myfile.write("\t%s\t"%guess)
         
     def name(file):
-        myfile = open(file,"a+", encoding="utf-8")
+        myfile = open(file,"a+", encoding="utf-8")      # this writes to file user name
         myfile.write("Name: " + myID +"\n")
         
 print("Hello, what is your name?")
@@ -30,25 +30,25 @@ playagain = ("yes")
 name("guestaken.txt")
 
         
-while playagain == ("yes") or ("y"):
+while playagain == ("yes") or ("y"):     #loop to play again
 
     guessesTaken = 0    
-    guess = []
+    guess = []                       #empty lists, where numbers are added later.
     result = ["","","",""]
-    number = [random.randint(1,20), random.randint(1,20), random.randint(1,20), random.randint(1,20)]
+    number = [random.randint(1,20), random.randint(1,20), random.randint(1,20), random.randint(1,20)]    # 4 number code
     
     
    
-    print("I'm thinking of a number from 1 to 20 (You have 5 guesses)") 
+    print("I'm thinking of a code with 4 numbers from 1 to 20 (You have 50 guesses)") 
     
     while guessesTaken < 50:
         print("Well, " + myID + ", guess what number i'm thinking of.")
-        rguess = [input(), input(), input(), input()]
+        rguess = [input(), input(), input(), input()]    #guess input
         
         guess.append(rguess)
         
                                
-        if rguess == ["666","666","666","666"]:
+        if rguess == ["666","666","666","666"]:   # Cheat code
             guesses("guestaken.txt") 
             print("##############--",number,"--##############")
             #guess = [input(),input(),input(),input()]
@@ -68,7 +68,7 @@ while playagain == ("yes") or ("y"):
                 result[2]=("too high")
             if guess[3] > number[3]:
                 result[3]=("too high")
-            print(result)
+            print(result)                    #this line has to be changed, because it prints everytime when guess isn't equal with number in system
                       
             #print("Guesses left: %i"%(left))
             guesses("guestaken.txt")
@@ -103,7 +103,7 @@ while playagain == ("yes") or ("y"):
             
         
         
-        if guess[0] == number[0] and guess[1] == number[1] and guess[2] == number[2] and guess[3] == number[3]:
+        if guess[0] == number[0] and guess[1] == number[1] and guess[2] == number[2] and guess[3] == number[3]:   # when all numbers are correct, loop has to end using break function
             
             if guess[0] == number[0]:
                 result[0]=("#")
@@ -128,7 +128,7 @@ while playagain == ("yes") or ("y"):
         #number = str(number)
         print("Pro Tip: The numbers are random. Think. [", number,"]" )
         
-    print("Play again? (yes/no)")
+    print("Play again? (yes/no)")    #  Play again function
     playagain = input()
 
     if playagain == ("no"):
